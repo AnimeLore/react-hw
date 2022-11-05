@@ -1,0 +1,19 @@
+.categoriesContainer {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  height: 85%;
+  margin-left: 40px;
+  white-space: nowrap;
+  margin-top: 51px;
+}
+
+.categoriesList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categoriesElement {
+  margin-bottom: 24px;
+}
