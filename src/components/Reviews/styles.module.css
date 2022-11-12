@@ -1,9 +1,9 @@
 .reviewsContainer {
-  height: max-content;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  row-gap: 16px;
-  margin-top: 40px;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 16px;
+    margin-top: 40px;
 }

@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectBookById} from "../../store/book/selectors";
 import {cartSlice} from "../../store/cart";
 import {selectBookCount} from "../../store/cart/selectors";
+import {Link} from "react-router-dom";
 
 const countRating = (reviews) => {
     let n = 0;
@@ -19,8 +20,8 @@ const countRating = (reviews) => {
 
 export function Book(props) {
     const dispatch = useDispatch();
-    const book = useSelector(state => selectBookById(state, props.bookId));
-    const count = useSelector(state => selectBookCount(state, book.id));
+    const book = useSelector((state) => selectBookById(state, props.bookId));
+    const count = useSelector((state) => selectBookCount(state, props.bookId));
 
     if (!book) {
         return null;
@@ -33,7 +34,9 @@ export function Book(props) {
             })}
         >
             <div className={styles.bookShortDesc}>
-                <strong className={styles.bookTitle}>{props.book.title}</strong>
+                <Link className={styles.linkNormalize} to={`/book/${props.bookId}`}>
+                    <strong className={styles.bookTitle}>{book.title}</strong>
+                </Link>
                 <div className={styles.descText}>
                     <div>{book.author}</div>
                     <div>{book.genre}</div>
@@ -51,7 +54,7 @@ export function Book(props) {
             >
                 <button
                     onClick={() => {
-                        dispatch(cartSlice.actions.removeBook(book.id))
+                        dispatch(cartSlice.actions.removeBook(book.id));
                     }}
                     className={classnames(styles.buttonOn, {
                         [styles.buttonOff]: !count,
@@ -64,11 +67,12 @@ export function Book(props) {
                 </div>
                 <button
                     onClick={() => {
-                        dispatch(cartSlice.actions.addBook(book.id))
+                        dispatch(cartSlice.actions.addBook(book.id));
                     }}
                     className={classnames(styles.buttonOn, {
                         [styles.buttonOff]: count > 9,
                     })}
+                    disabled={count > 9}
                 >
                     <PlusSvg/>
                 </button>

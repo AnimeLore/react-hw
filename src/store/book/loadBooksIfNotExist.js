@@ -1,9 +1,9 @@
 import {bookSlice} from "./index";
 import {prepareData} from "../utils";
 
-export const loadBookIfNotExist = (bookId) => (dispatch, getState) => {
+export const loadBooksIfNotExist = (categoryId) => (dispatch, getState) => {
     dispatch(bookSlice.actions.startLoading(undefined));
-    fetch(`http://localhost:3001/api/books?bookId=${bookId}`)
+    fetch(`http://localhost:3001/api/books?categoryId=${categoryId}`)
         .then((response) => response.json())
         .then((categories) => {
             dispatch(bookSlice.actions.successLoading(prepareData(categories)));

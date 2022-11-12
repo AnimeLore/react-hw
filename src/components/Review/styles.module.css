@@ -1,34 +1,36 @@
 .reviewHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-family: "Open Sans", serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
 }
+
 .reviewContainer {
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  white-space: pre-wrap;
-  row-gap: 16px;
-  margin-right: 40px;
-  margin-left: 40px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    white-space: pre-wrap;
+    row-gap: 16px;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .reviewText {
-  font-family: "Open Sans", serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
 }
+
 .stars {
-  color: rgba(0, 0, 0, 0.5);
-  letter-spacing: 0.35em;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.35em;
 }

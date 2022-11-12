@@ -1,19 +1,43 @@
 .categoriesContainer {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  height: 85%;
-  margin-left: 40px;
-  white-space: nowrap;
-  margin-top: 51px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    height: 85%;
+    margin-left: 40px;
+    white-space: nowrap;
+    margin-top: 51px;
 }
 
 .categoriesList {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .categoriesElement {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.linkMain {
+    color: black;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.linkCurrent {
+    color: black;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    cursor: default;
+}
+
+.linkNormalize {
+    text-decoration: none;
 }

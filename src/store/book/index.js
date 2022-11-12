@@ -4,11 +4,11 @@ import {Statuses} from "../../constants/statuses";
 const initialState = {
     entities: {},
     ids: [],
-    status: Statuses.idle
-}
+    status: Statuses.idle,
+};
 
 export const bookSlice = createSlice({
-    name: 'book',
+    name: "book",
     initialState,
     reducers: {
         startLoading: (state) => {
@@ -22,5 +22,5 @@ export const bookSlice = createSlice({
         failLoading: (state) => {
             state.status = Statuses.failed;
         },
-    }
+    },
 });

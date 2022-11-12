@@ -1,25 +1,34 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { Category } from "../Category/Category";
+import {Category} from "../Category/Category";
+import classnames from "classnames";
+import {NavLink} from "react-router-dom";
 
 export function Categories(props) {
-  return (
-    <section className={styles.categoriesContainer}>
-      <ul className={styles.categoriesList}>
-        {props.categories.map((category) => (
-          <li
-            key={category.id}
-            onClick={() => props.changeCategory(category)}
-            className={styles.categoriesElement}
-          >
-            <Category
-              key={category.id}
-              category={category}
-              active={category === props.currentCategory}
-            />
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
+    const categories = props.categories;
+    return (
+        <section className={styles.categoriesContainer}>
+            <ul className={styles.categoriesList}>
+                {categories.map((category) => (
+                    <li key={category.id} className={styles.categoriesElement}>
+                        <NavLink
+                            to={category.id}
+                            key={category.id}
+                            className={({isActive}) =>
+                                classnames(
+                                    styles.linkMain,
+                                    {
+                                        [styles.linkCurrent]: isActive,
+                                    },
+                                    styles.linkNormalize
+                                )
+                            }
+                        >
+                            <Category key={category.id} category={category}/>
+                        </NavLink>
+                    </li>
+                ))}
+            </ul>
+        </section>
+    );
 }

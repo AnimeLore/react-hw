@@ -12,9 +12,12 @@ export default function App() {
             <Provider store={store}>
                 <Layout>
                     <Routes>
-                        <Route index element={<BookListPage />}/>
+                        <Route path="/category" element={<BookListPage/>}>
+                            <Route path=":categoryId" element={<BookListPage/>}/>
+                        </Route>
                         <Route path="/book">
-                            <Route path=":bookId" element={<BookDescPage />} /> {/* @TODO: Прикрутить роутинг по страницам */}  {/* @TODO: Сделать сервер */}  {/* @TODO: Протестить отзывы, книги да и в целом все */}
+                            <Route path=":bookId" element={<BookDescPage/>}/>{" "}
+                            {/* @TODO: Протестить отзывы, книги да и в целом все */}
                         </Route>
                     </Routes>
                 </Layout>

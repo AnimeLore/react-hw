@@ -4,8 +4,9 @@ import {useSelector} from "react-redux";
 import {selectReviewById} from "../../store/review/selectors";
 
 export function Review(props) {
-    const review = useSelector(state => selectReviewById(state, props.bookId));
-
+    const review = useSelector((state) =>
+        selectReviewById(state, props.reviewId)
+    );
     if (!review) {
         return null;
     }
@@ -14,8 +15,7 @@ export function Review(props) {
             <div className={styles.reviewHeader}>
                 <strong>{review.name}</strong>
                 <div className={styles.stars}>
-                    {"★".repeat(review.rating) +
-                        "☆".repeat(5 - review.rating)}
+                    {"★".repeat(review.rating) + "☆".repeat(5 - review.rating)}
                 </div>
             </div>
             <div className={styles.reviewText}>
