@@ -5,6 +5,7 @@ import {BookDescPage} from "./pages/BookDescPage/BookDescPage";
 import {Provider} from "react-redux";
 import {store} from "./store";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {CartPage} from "./pages/CartPage/CartPage";
 
 export default function App() {
     return (
@@ -16,9 +17,9 @@ export default function App() {
                             <Route path=":categoryId" element={<BookListPage/>}/>
                         </Route>
                         <Route path="/book">
-                            <Route path=":bookId" element={<BookDescPage/>}/>{" "}
-                            {/* @TODO: Протестить отзывы, книги да и в целом все */}
+                            <Route path=":bookId" element={<BookDescPage/>}/>
                         </Route>
+                        <Route path="/cart" element={<CartPage/>}/>
                     </Routes>
                 </Layout>
             </Provider>

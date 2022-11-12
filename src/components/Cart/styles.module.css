@@ -1,0 +1,78 @@
+.cartContainer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-left: 40px;
+    white-space: nowrap;
+    margin-top: 51px;
+    width: 387px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 438px;
+    height: max-content;
+}
+
+.cartList {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+.cartElement {
+    margin-bottom: 16px;
+}
+
+.linkMain {
+    color: black;
+    font-family: "Open Sans", serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.cartTitle {
+    font-family: 'Open Sans', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.footerContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.totalPrice {
+    font-family: 'Open Sans', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 27px;
+
+    color: #000000;
+}
+
+.buyButton {
+    padding: 6px 12px 8px;
+    font-family: 'Open Sans', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    background: #000000;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./styles.module.css";
 import classnames from "classnames";
 import {ReactComponent as PlusSvg} from "./Plus.svg";
@@ -8,6 +8,9 @@ import {selectBookById} from "../../store/book/selectors";
 import {cartSlice} from "../../store/cart";
 import {selectBookCount} from "../../store/cart/selectors";
 import {Link} from "react-router-dom";
+import {loadReviewIfNotExist} from "../../store/review/loadReviewIfNotExist";
+import {selectReviewModule} from "../../store/review/selectors";
+import {Statuses} from "../../constants/statuses";
 
 const countRating = (reviews) => {
     let n = 0;
@@ -22,10 +25,18 @@ export function Book(props) {
     const dispatch = useDispatch();
     const book = useSelector((state) => selectBookById(state, props.bookId));
     const count = useSelector((state) => selectBookCount(state, props.bookId));
+    useEffect(() => {
+        dispatch(loadReviewIfNotExist(props.bookId));
+    }, [props.bookId, dispatch]);
 
-    if (!book) {
+    const reviewAll = useSelector((state) => selectReviewModule(state));
+
+    if (!book || reviewAll.status === Statuses.failed) {
         return null;
     }
+    const reviews = (reviewAll.entities.length === 0 && reviewAll.entities.status === Statuses.success) ? undefined : book.reviews.map((id) => {
+        return reviewAll.entities[id];
+    });
 
     return (
         <section
@@ -41,8 +52,8 @@ export function Book(props) {
                     <div>{book.author}</div>
                     <div>{book.genre}</div>
                     <div className={styles.stars}>
-                        {"★".repeat(countRating(book.reviews)[0]) +
-                            "☆".repeat(countRating(book.reviews)[1])}
+                        {(reviews) && "★".repeat(countRating(reviews)[0]) +
+                            "☆".repeat(countRating(reviews)[1])}
                     </div>
                 </div>
                 <b className={styles.bookPrice}>{book.price} ₽</b>

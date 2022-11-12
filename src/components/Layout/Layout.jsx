@@ -11,7 +11,8 @@ export const Layout = (props) => {
                     <Link className={styles.linkNormalize} to="/category">
                         <span className={styles.headerText}>Магазин</span>
                     </Link>
-                    <CartSvg className={styles.headerCart}/>
+                    <Link className={styles.linkNormalize} to="/cart"><CartSvg
+                        className={styles.headerCart}/></Link>
                 </div>
             </header>
             <div className={styles.mainContent}>{props.children}</div>

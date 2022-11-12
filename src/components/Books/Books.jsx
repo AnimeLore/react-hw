@@ -5,15 +5,24 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadBooksIfNotExist} from "../../store/book/loadBooksIfNotExist";
 import {selectIsBooksLoading} from "../../store/book/selectors";
 import {selectCategoriesBookIds} from "../../store/category/selectors";
+import {selectCartBooks} from "../../store/cart/selectors";
 
-export function Books({categoryId}) {
+export function Books({categoryId, cart}) {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadBooksIfNotExist(categoryId));
-    }, [categoryId, dispatch]);
-    const books = useSelector((state) =>
-        selectCategoriesBookIds(state, categoryId)
+        if (!cart) {
+            dispatch(loadBooksIfNotExist(categoryId));
+        }
+    }, [cart, categoryId, dispatch]);
+    const books = useSelector((state) => {
+            if (!cart) {
+                return selectCategoriesBookIds(state, categoryId);
+            } else {
+                return Object.keys(selectCartBooks(state));
+            }
+        }
     );
+    console.log(books)
     const isLoading = useSelector((state) => selectIsBooksLoading(state));
 
     if (isLoading) {
@@ -21,7 +30,7 @@ export function Books({categoryId}) {
     }
     return (
         <section className={styles.booksContainer}>
-            {books &&
+            {(books && books.length > 0) &&
                 books.map((id) => <Book key={id} bookId={id} adaptiveHeight={false}/>)}
         </section>
     );
