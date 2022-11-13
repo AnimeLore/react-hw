@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { memo, useEffect } from "react";
 import styles from "./styles.module.css";
 import {Book} from "../Book/Book";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,7 +7,7 @@ import {selectIsBooksLoading} from "../../store/book/selectors";
 import {selectCategoriesBookIds} from "../../store/category/selectors";
 import {selectCartBooks} from "../../store/cart/selectors";
 
-export function Books({categoryId, cart}) {
+function Books({categoryId, cart}) {
     const dispatch = useDispatch();
     useEffect(() => {
         if (!cart) {
@@ -22,7 +22,7 @@ export function Books({categoryId, cart}) {
             }
         }
     );
-    console.log(books)
+    // console.log(books)
     const isLoading = useSelector((state) => selectIsBooksLoading(state));
 
     if (isLoading) {
@@ -30,8 +30,11 @@ export function Books({categoryId, cart}) {
     }
     return (
         <section className={styles.booksContainer}>
+            {/* map */}
             {(books && books.length > 0) &&
                 books.map((id) => <Book key={id} bookId={id} adaptiveHeight={false}/>)}
         </section>
     );
 }
+
+export default memo(Books)

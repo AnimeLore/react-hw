@@ -58,6 +58,7 @@ export function Book(props) {
                 </div>
                 <b className={styles.bookPrice}>{book.price} ₽</b>
             </div>
+            {/* Счётчик */}
             <div
                 className={classnames(styles.amountSelect, {
                     [styles.amountBottom]: props.adaptiveHeight,

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import {useSelector} from "react-redux";
 import {selectCartBooks} from "../../store/cart/selectors";
-import {CartItem} from "../CartItem/CartItem";
+import CartItem from "../CartItem/CartItem";
 import {selectBookModule} from "../../store/book/selectors";
 
 export function Cart() {
@@ -18,6 +18,7 @@ export function Cart() {
             <div className={styles.wrapper}>
                 <span className={styles.cartTitle}>Ваш заказ:</span>
                 <ul className={styles.cartList}>
+                    {/* map */}
                     {Object.keys(cart).map((cartItem) => (
                         <li key={cartItem} className={styles.cartElement}>
                             <CartItem key={cartItem} bookId={cartItem}/>
