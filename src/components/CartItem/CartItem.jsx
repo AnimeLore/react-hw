@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import {useSelector} from "react-redux";
 import styles from './styles.module.css';
 import {selectBookById} from "../../store/book/selectors";
 import {selectBookCount} from "../../store/cart/selectors";
 
-export function CartItem({bookId}) {
+function CartItem({bookId}) {
     const book = useSelector((state) => selectBookById(state, bookId));
     const count = useSelector((state) => selectBookCount(state, bookId));
     if (!book) {
@@ -17,3 +17,5 @@ export function CartItem({bookId}) {
         </div>
     );
 }
+
+export default memo(CartItem);
