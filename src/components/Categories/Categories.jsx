@@ -30,7 +30,6 @@ export function Categories(props) {
 		})
 
 	, [categories]);
-	console.log(categoryList)
 	return (
 		<section className={styles.categoriesContainer}>
 			<ul className={styles.categoriesList}>

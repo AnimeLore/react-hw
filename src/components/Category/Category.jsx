@@ -1,7 +1,6 @@
-import React, { memo } from "react";
+import React from "react";
 
-function Category(props) {
+export function Category(props) {
     return <span>{props.category.name}</span>;
 }
 
-export default memo(Category)

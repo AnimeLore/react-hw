@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 import {selectBookById} from "../../store/book/selectors";
 import {selectBookCount} from "../../store/cart/selectors";
 
-function CartItem({bookId}) {
+export function CartItem({bookId}) {
     const book = useSelector((state) => selectBookById(state, bookId));
     const count = useSelector((state) => selectBookCount(state, bookId));
     if (!book) {
@@ -17,5 +17,3 @@ function CartItem({bookId}) {
         </div>
     );
 }
-
-export default memo(CartItem);
