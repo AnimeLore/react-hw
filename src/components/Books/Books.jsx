@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useMemo} from "react";
 import styles from "./styles.module.css";
 import {Book} from "../Book/Book";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,31 +7,36 @@ import {selectIsBooksLoading} from "../../store/book/selectors";
 import {selectCategoriesBookIds} from "../../store/category/selectors";
 import {selectCartBooks} from "../../store/cart/selectors";
 
-export function Books({categoryId, cart}) {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (!cart) {
-            dispatch(loadBooksIfNotExist(categoryId));
-        }
-    }, [cart, categoryId, dispatch]);
-    const books = useSelector((state) => {
-            if (!cart) {
-                return selectCategoriesBookIds(state, categoryId);
-            } else {
-                return Object.keys(selectCartBooks(state));
-            }
-        }
-    );
-    console.log(books)
-    const isLoading = useSelector((state) => selectIsBooksLoading(state));
+export function Books({categoryId}) {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		if (categoryId !== undefined) {
+			dispatch(loadBooksIfNotExist(categoryId));
+		}
+	}, [categoryId, dispatch]);
+	const books = useSelector((state) => {
+			if (categoryId !== undefined) {
+				return selectCategoriesBookIds(state, categoryId);
+			} else {
+				return Object.keys(selectCartBooks(state));
+			}
+		}
+	);
+	const isLoading = useSelector((state) => selectIsBooksLoading(state));
+	const bookList = useMemo(() =>
+			books.map((id) => {
+				return <Book key={id} bookId={id} adaptiveHeight={false}/>
+			})
+		, [books])
+	if (isLoading) {
+		return <span>Загрузка книг...</span>;
+	}
 
-    if (isLoading) {
-        return <span>Загрузка книг...</span>;
-    }
-    return (
-        <section className={styles.booksContainer}>
-            {(books && books.length > 0) &&
-                books.map((id) => <Book key={id} bookId={id} adaptiveHeight={false}/>)}
-        </section>
-    );
+
+	return (
+		<section className={styles.booksContainer}>
+			{(books && books.length > 0) &&
+				bookList}
+		</section>
+	);
 }

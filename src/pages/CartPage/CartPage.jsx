@@ -7,7 +7,7 @@ export function CartPage() {
     return (
         <main className={styles.mainContent}>
             <Cart/>
-            <Books cart={true}/>
+            <Books/>
         </main>
     );
 }

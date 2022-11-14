@@ -18,7 +18,7 @@ export function BookListPage() {
     return (
         <main className={styles.mainContent}>
             <Categories categories={categories}/>
-            {categories.length > 0 && categoryId && <Books cart={false} categoryId={categoryId}/>}
+            {categories.length > 0 && categoryId && <Books categoryId={categoryId}/>}
         </main>
     );
 }
