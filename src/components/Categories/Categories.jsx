@@ -1,15 +1,15 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./styles.module.css";
-import {Category} from "../Category/Category";
+import Category from "../Category/Category";
 import classnames from "classnames";
 import {NavLink} from "react-router-dom";
 
-export function Categories(props) {
+function Categories(props) {
     const categories = props.categories;
     return (
         <section className={styles.categoriesContainer}>
             <ul className={styles.categoriesList}>
-                {categories.map((category) => (
+                {categories.map((category) => ( // FIXME .map
                     <li key={category.id} className={styles.categoriesElement}>
                         <NavLink
                             to={category.id}
@@ -32,3 +32,5 @@ export function Categories(props) {
         </section>
     );
 }
+
+export default memo(Categories);

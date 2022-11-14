@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import {Categories} from "../../components/Categories/Categories";
-import {Books} from "../../components/Books/Books";
+import Categories from "../../components/Categories/Categories";
+import Books from "../../components/Books/Books";
 import styles from "./styles.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCategories} from "../../store/category/selectors";
@@ -11,6 +11,7 @@ export function BookListPage() {
     const {categoryId} = useParams();
     const dispatch = useDispatch();
     const categories = useSelector((state) => selectCategories(state));
+
     useEffect(() => {
         dispatch(loadCategoryIfNotExist);
     }, []);
